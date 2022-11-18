@@ -7,6 +7,7 @@ import { BrowserRouter as Router,
 import HomePage from './components/HomePage';
 import Login from './components/Login';
 import Register from './components/Register';
+import Profil from './components/Profil'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
 <Route exact path="/" element={<HomePage/>}></Route>
 <Route path="/login" element={<Login/>}></Route>
 <Route path="/register" element={<Register/>}></Route>
+<Route path="/profil" element={<Profil/>}></Route>
 </Routes>
     </Router>
      </div>

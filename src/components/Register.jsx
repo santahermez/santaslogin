@@ -34,6 +34,7 @@ async function onSubmit (e) {
 }
   return (
     <div>
+      <a href="http://localhost:3000/">Home</a>
         <h1>Register</h1>
         <form onSubmit={onSubmit}> 
         <label htmlFor="name">Firstname</label>
@@ -73,6 +74,7 @@ async function onSubmit (e) {
         >submit</button>
         </form>
         <h1>{message}</h1>
+        <a href="http://localhost:3000/login">Redan medlem?</a>
     </div>
   )
 }

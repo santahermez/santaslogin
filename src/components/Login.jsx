@@ -22,6 +22,11 @@ export default function () {
         })
         const data = await res.json()
         console.log(data)
+        console.log(res.status)
+        if (res.status === 200) {
+            window.location.href = "http://localhost:3000/profil"
+            return
+        }
         console.log(data.message)
         setMessage(data.message)
         } catch (error) {
@@ -31,6 +36,7 @@ export default function () {
 
   return (
     <div>
+      <a href="http://localhost:3000/">Home</a>
         <h1>Login</h1>
         <form onSubmit={onSubmit}>
 
@@ -54,6 +60,7 @@ export default function () {
 
 </form>
 <h1>{message}</h1>
+<a href="http://localhost:3000/register">Inte medlem?</a>
     </div>
   )
 }
