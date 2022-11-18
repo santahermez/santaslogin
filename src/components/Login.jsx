@@ -4,6 +4,7 @@ export default function () {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [message, setMessage] = useState('')
 
     const emailChanged        = e => setEmail(e.target.value)
     const passwordChanged     = e => setPassword(e.target.value)
@@ -20,6 +21,9 @@ export default function () {
           })
         })
         const data = await res.json()
+        console.log(data)
+        console.log(data.message)
+        setMessage(data.message)
         } catch (error) {
             console.log(error)
         }
@@ -28,7 +32,7 @@ export default function () {
   return (
     <div>
         <h1>Login</h1>
-<form>
+        <form onSubmit={onSubmit}>
 
 <label htmlFor="email">Email</label>
         <input
@@ -49,7 +53,7 @@ export default function () {
         <button type='submit'>login</button>
 
 </form>
-
+<h1>{message}</h1>
     </div>
   )
 }

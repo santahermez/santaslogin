@@ -4,10 +4,13 @@ import { useState } from 'react'
 export default function Register() { 
 
     const [firstname, setFirstname] = useState('')
+    const [lastname, setLastname] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [message, setMessage] = useState('')
 
     const firstnameChanged    = e => setFirstname(e.target.value)
+    const lastnameChanged    = e => setLastname(e.target.value)
     const emailChanged        = e => setEmail(e.target.value)
     const passwordChanged     = e => setPassword(e.target.value)
      
@@ -18,11 +21,13 @@ async function onSubmit (e) {
     const res = await fetch("http://localhost:8080/register", {
         method: "POST",
         headers: { "Content-type": "application/json" },
-        body: JSON.stringify({ firstname, email, password })
+        body: JSON.stringify({ firstname, lastname, email, password })
    })
    const data = await res.json()
    console.log(res.status)
    console.log(data)
+   setMessage(data.message)
+
    } catch (error) {
     console.log(error)
    }
@@ -38,6 +43,14 @@ async function onSubmit (e) {
         required= {true}
         value={firstname}
         onChange={firstnameChanged}
+        />
+        <label htmlFor="name">Lastname</label>
+        <input 
+        type="text" 
+        name='lastname'
+        required= {true}
+        value={lastname}
+        onChange={lastnameChanged}
         />
         <label htmlFor="email">Email</label>
         <input
@@ -59,6 +72,7 @@ async function onSubmit (e) {
         type='submit'
         >submit</button>
         </form>
+        <h1>{message}</h1>
     </div>
   )
 }
