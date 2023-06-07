@@ -1,5 +1,8 @@
 import { useState } from "react"
+import "./login.css";
 
+
+// eslint-disable-next-line import/no-anonymous-default-export
 export default function () {
 
     const [email, setEmail] = useState('')
@@ -35,7 +38,7 @@ export default function () {
     }
 
   return (
-    <div>
+    <div className="login-container">
       <a href="http://localhost:3000/">Home</a>
         <h1>Login</h1>
         <form onSubmit={onSubmit}>
@@ -56,7 +59,7 @@ export default function () {
         value={password}
         onChange={passwordChanged}
         />
-        <button type='submit'>login</button>
+        <button type='submit'>Login</button>
 
 </form>
 <h1>{message}</h1>

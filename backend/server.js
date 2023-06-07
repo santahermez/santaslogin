@@ -18,6 +18,8 @@ app.post('/register', async (req,res) =>{
     const lastname = req.body.lastname
     const email = req.body.email
     const password = req.body.password
+
+    console.log(firstname, lastname, email, password)
     
     const oldUserEmail = await User.findOne({ email });                             
         

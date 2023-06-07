@@ -1,5 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
+import "./register.css";
+
 
 export default function Register() { 
 
@@ -33,7 +35,7 @@ async function onSubmit (e) {
    }
 }
   return (
-    <div>
+    <div className='container'>
       <a href="http://localhost:3000/">Home</a>
         <h1>Register</h1>
         <form onSubmit={onSubmit}> 

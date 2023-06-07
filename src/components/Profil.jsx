@@ -1,9 +1,17 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import "./profil.css";
 
-const Welcome = () => {
+
+const ProfilePage = () => {
   return (
-    <div>Welcome</div>
-  )
-}
+    <div className='container'>
+      <h1>Profile Page</h1>
+      <Link to="/AccountSettings">
+        <button>Account Settings</button>
+      </Link>
+    </div>
+  );
+};
 
-export default Welcome
+export default ProfilePage;
