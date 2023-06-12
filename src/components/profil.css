@@ -1,35 +1,70 @@
 /* CSS för ProfilePage */
-
 .container {
-    max-width: 200px;
-    margin: 0 auto;
-    padding: 100px;
-    background-color: #f2f2f2;
+  max-width: 200px;
+  margin: 0 auto;
+  padding: 100px;
+  background-color: #f2f2f2;
 }
-  
-  h1 {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  button:active {
-    background-color: #003d80;
-  }
-  
-  
+
+h1 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+button:active {
+  background-color: #003d80;
+}
+
+/* Styla bilduppladdningsområdet */
+input[type="file"] {
+  display: none; /* Dölj standardfilinmatningsfältet */
+}
+
+.custom-file-upload {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.custom-file-upload:hover {
+  background-color: #0056b3;
+}
+
+.custom-file-upload:active {
+  background-color: #003d80;
+}
+
+.custom-file-upload::before {
+  content: "Ladda upp bild";
+}
+
+.custom-file-upload input[type="file"] {
+  display: none; /* Dölj standardfilinmatningsfältet */
+}
+
+img {
+  max-width: 100%;
+  max-height: 200px;
+  margin-top: 10px;
+}

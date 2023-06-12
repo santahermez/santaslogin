@@ -1,69 +1,71 @@
 import { useState } from "react"
+import { useNavigate, Link } from "react-router-dom";
 import "./login.css";
 
+const Login = ({ onFetch }) => {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [message, setMessage] = useState('')
+  const navigate = useNavigate()
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default function () {
+  const emailOnChange = (e) => setEmail(e.target.value)
+  const passwordOnChange = (e) => setPassword(e.target.value)
 
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [message, setMessage] = useState('')
-
-    const emailChanged        = e => setEmail(e.target.value)
-    const passwordChanged     = e => setPassword(e.target.value)
-
-    async function onSubmit(e){
-        e.preventDefault()
-        try {
-            const res = await fetch('http://localhost:8080/login', {
-          method: "POST",
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({
-            email: email,
-            password: password
-          })
+  async function onSubmit(e) {
+    e.preventDefault()
+    try {
+      const res = await fetch('http://localhost:8080/login', {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: email,
+          password: password
         })
-        const data = await res.json()
-        console.log(data)
-        console.log(res.status)
-        if (res.status === 200) {
-            window.location.href = "http://localhost:3000/profil"
-            return
-        }
-        console.log(data.message)
-        setMessage(data.message)
-        } catch (error) {
-            console.log(error)
-        }
+      })
+
+      const data = await res.json()
+
+      if (res.status === 200) {
+        navigate("/profil")
+        onFetch(data.user)
+        localStorage.setItem('accessToken', data.token)
+        return
+      }
+      setMessage(data.message)
+    } catch (error) {
+      console.log(error)
     }
+  }
 
   return (
     <div className="login-container">
-      <a href="http://localhost:3000/">Home</a>
-        <h1>Login</h1>
-        <form onSubmit={onSubmit}>
+      <Link to="/">Hem</Link>
+      <h1>Logga in här</h1>
+      <form onSubmit={onSubmit}>
 
-<label htmlFor="email">Email</label>
+        <label htmlFor="email">Email</label>
         <input
-        required={true}
-        type="email"
-        name='email'
-        value={email}
-        onChange={emailChanged}
+          required={true}
+          type="email"
+          name='email'
+          value={email}
+          onChange={emailOnChange}
         />
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password">Lösenord</label>
         <input
-        required={true}
-        type="password"
-        name='password'
-        value={password}
-        onChange={passwordChanged}
+          required={true}
+          type="password"
+          name='password'
+          value={password}
+          onChange={passwordOnChange}
         />
-        <button type='submit'>Login</button>
+        <button type='submit'>Logga in</button>
 
-</form>
-<h1>{message}</h1>
-<a href="http://localhost:3000/register">Inte medlem?</a>
+      </form>
+      <h1>{message}</h1>
+      <Link to="/register">Inte medlem?</Link>
     </div>
   )
 }
+
+export default Login
